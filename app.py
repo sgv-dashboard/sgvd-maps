@@ -52,8 +52,7 @@ def get_map():
 		icon=folium.Icon(color="red"),
 	).add_to(m)
 
-	m.save('templates/map.html')
-	return render_template("map.html")
+	return m.get_root().render()
 
 ###############################################################
 #                         Api Routes                         #
