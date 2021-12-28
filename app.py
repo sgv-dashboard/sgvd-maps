@@ -52,7 +52,13 @@ def get_map():
 		icon=folium.Icon(color="red"),
 	).add_to(m)
 
-	return m.get_root().render()
+	data = dict (
+		distance = distance,
+		duration = duration,
+		html_map = m.get_root().render()
+	)
+
+	return data
 
 ###############################################################
 #                         Api Routes                         #
