@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return "Dit is een test"
 
 @app.route('/map', methods=['GET'])
 def get_map():
