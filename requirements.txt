@@ -2,3 +2,4 @@ Flask
 gunicorn
 openrouteservice
 folium
+flask_cors
