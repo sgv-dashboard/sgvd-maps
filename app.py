@@ -3,8 +3,10 @@ from datetime import datetime
 import openrouteservice
 from openrouteservice import convert
 import folium
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 ###############################################################
 #                         Web Routes                         #
