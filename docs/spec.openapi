@@ -1,0 +1,86 @@
+openapi: 3.0.0
+servers:
+  - description: Heroku
+    url: https://sgvd-maps.herokuapp.com
+info:
+  description: Api for the sgv-dashboard in order to calculate route description
+  version: "1.0.0"
+  title: sgvd-maps
+  contact:
+    email: siemen.vandervoort@student.uhasselt.be
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+tags:
+  - name: developers
+    description: Operations available to regular developers
+paths:
+  /maps:
+    get:
+      tags:
+        - developers
+      summary: Gets map with route description (map)
+      operationId: map
+      description: |
+        By passing in the appropriate arguments, you can get a map with the starting and end point together with the route description and travelling time and distance.
+      parameters:
+        - in: query
+          name: latS
+          description: The lattitude of the starting point.
+          required: true
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+        - in: query
+          name: lonS
+          description: The longitude of the starting point.
+          required: true
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90        
+        - in: query
+          name: latE
+          description: The lattitude of the end point.
+          required: true
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90        
+        - in: query
+          name: lonE
+          description: The longitude of the end point.
+          required: true
+          schema:
+            type: number
+            format: float
+            minimum: -90
+            maximum: 90
+      responses:
+        "200":
+          description: Distance, duration and map
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/mapsJson"
+        "500":
+          description: bad input parameter
+components:
+  schemas:
+    mapsJson:
+      description: The input parameters and the requested time
+      type: object
+      properties:
+        distance:
+          type: object
+          format: float (kilometers)
+        duration:
+          type: object
+          format: float (minutes)
+        html map:
+          type: object
+          format: html map (html)

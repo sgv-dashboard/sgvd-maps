@@ -16,12 +16,14 @@ CORS(app)
 def index():
 	return "Dit is een test"
 
+###############################################################
+#                         Api Routes                         #
+###############################################################
+
 @app.route('/map', methods=['GET'])
 def get_map():
-	#Key hoort bij mijn account, max 2000 requests per 24h
 	client = openrouteservice.Client(key='5b3ce3597851110001cf62484b7bc6e27b5b47fabce3821209f35d73')
 
-	#Test url: http://127.0.0.1:5000/map?latS=51.075824&lonS=5.262364&latE=50.927683&lonE=5.386107
 	latitudeStart = float(request.args.get('latS'))
 	longitudeStart = float(request.args.get('lonS'))
 	latitudeEnd = float(request.args.get('latE'))
@@ -32,7 +34,6 @@ def get_map():
 	geometry = client.directions(coords)['routes'][0]['geometry']
 	decoded = convert.decode_polyline(geometry)
 
-	#We kunnen ook gewoon de afstand en tijd weergeven, zonder kaartje
 	distance = str(round(res['routes'][0]['summary']['distance']/1000,1))
 	duration = str(round(res['routes'][0]['summary']['duration']/60,1))
 
@@ -62,11 +63,5 @@ def get_map():
 
 	return data
 
-###############################################################
-#                         Api Routes                         #
-###############################################################
-
 if __name__=="__main__":
 	app.run(debug=True)
-
-
