@@ -15,3 +15,7 @@ $ curl "https://sgvd-maps.herokuapp.com/map?key=YOUR_OWN_API_KEY&latS=51.075824&
     "html_map" : "html page"
 }
 ```
+
+## Extra documentation
+
+Accessible at: https://sgvd-maps.herokuapp.com/documentation
