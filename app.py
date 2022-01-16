@@ -20,11 +20,11 @@ def index():
 	return "Maps API"
 
 @app.route('/documentation_maps')
-def documentation():
+def documentation_maps():
 	return render_template('documentation_maps.html')
 
 @app.route('/documentation_weather')
-def documentation():
+def documentation_weather():
 	return render_template('documentation_weather.html')
 
 ###############################################################
