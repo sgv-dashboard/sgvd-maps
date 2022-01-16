@@ -19,9 +19,13 @@ VALID_API_KEYS = {'5b3ce3597851110001cf62484b7bc6e27b5b47fabce3821209f35d73'}
 def index():
 	return "Maps API"
 
-@app.route('/documentation')
+@app.route('/documentation_maps')
 def documentation():
-	return render_template('documentation.html')
+	return render_template('documentation_maps.html')
+
+@app.route('/documentation_weather')
+def documentation():
+	return render_template('documentation_weather.html')
 
 ###############################################################
 #                         Api Routes                         #
